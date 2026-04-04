@@ -42,6 +42,7 @@ prompt = PromptTemplate(
     1. Output ONLY a valid JSON object representing the billing parameters. 
     2. DO NOT output a Python script. No ```python blocks.
     3. If the user input is completely unrelated to electricity billing (e.g., "hello", "how are you", "apple"), output the EXACT same JSON as the Current State without changing a single number.
+    4. If the user mentions time in months (e.g., "2 months"), multiply it by 30 to calculate the 'billing_days'.
     """,
     input_variables=["memory", "input"],
     partial_variables={"format_instructions": base_parser.get_format_instructions()}
