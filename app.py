@@ -33,24 +33,36 @@ with st.sidebar:
         st.rerun()
         
     st.divider()
-    st.subheader("💡 Try these scenarios")
+    st.subheader("💡 Master Test Scenarios")
     
     sidebar_prompt = None
-    if st.button("🏢 1. Commercial Shop"):
-        sidebar_prompt = "I run a small shop with a 5kw load. We consumed 450 units over the last 30 days."
-        
-    if st.button("⏱️ 2. Smart Meter ToD"):
-        sidebar_prompt = "I am on Prepaid. I used 500 units total. 100 were peak and 50 were off-peak."
-        
-    if st.button("🏭 3. HT Factory Penalty"):
-        sidebar_prompt = "I have an industrial factory in Maharashtra. My contract demand is 500kVA, but I hit a max demand of 300kVA. I consumed 10,000 units. My power factor was 0.85."
-        
-    if st.button("🔌 4. Appliance Estimator"):
-        sidebar_prompt = "I have a 2kw domestic connection. I don't know my units, but I run two 1.5-ton ACs for 8 hours a day, and 4 ceiling fans for 12 hours a day."
+    
+    # --- Grid Layout for Scenarios ---
+    c1, c2 = st.columns(2)
+    with c1:
+        if st.button("🏢 1. Shop (NDS)"):
+            sidebar_prompt = "I run a small shop with a 5kw load. We consumed 450 units over the last 30 days."
+        if st.button("🏭 3. HT Factory"):
+            sidebar_prompt = "Industrial factory in Maharashtra. Contract demand 500kVA, max demand 300kVA. 10,000 units. PF 0.85."
+        if st.button("☀️ 5. Solar Net"):
+            sidebar_prompt = "I have a 3kW solar setup. I imported 500 units from the grid but exported 200 units back. Domestic Bihar."
+        if st.button("💳 7. Installments"):
+            sidebar_prompt = "Commercial user in Delhi, 5kW load. 600 units. 4 installments of ₹250 each. Wallet balance is ₹1,200."
+        if st.button("🚨 9. HT Overload"):
+            sidebar_prompt = "Industrial connection. Contract Demand is 100kVA, but we hit 150kVA Max Demand. 5000 units, PF 0.88. Show penalty."
 
-    if st.button("☀️ 5. Solar Net Metering"):
-        sidebar_prompt = "I have a 3kW solar setup. I imported 500 units from the grid but exported 200 units back. My category is Domestic Bihar."
-        
+    with c2:
+        if st.button("⏱️ 2. Smart ToD"):
+            sidebar_prompt = "I am on Prepaid. I used 500 units total. 100 were peak and 50 were off-peak."
+        if st.button("🔌 4. Appliances"):
+            sidebar_prompt = "2kw domestic. I don't know my units, but I run two 1.5-ton ACs for 8 hours a day, and 4 ceiling fans for 12 hours a day."
+        if st.button("⚖️ 6. DPS Penalty"):
+            sidebar_prompt = "Domestic in Bihar, 2kW load. Used 250 units. I have an old unpaid bill (arrears) of ₹4,500 which is 60 days overdue."
+        if st.button("🔋 8. Epic Combo"):
+            sidebar_prompt = "Bihar Domestic, 3kW. 2 ACs for 8 hours/day. Solar export 150 units. 2 pending installments and an arrear of ₹1,000."
+        if st.button("🏆 10. Zero Bill"):
+            sidebar_prompt = "Domestic solar user. 5kW load. I imported 300 units but my solar panels exported 450 units. What happens to my bill?"
+
     st.divider()
     st.subheader("📸 Upload Bill or Meter")
     uploaded_file = st.file_uploader("Upload PDF or Image", type=["pdf", "jpg", "png", "jpeg"], label_visibility="collapsed")
