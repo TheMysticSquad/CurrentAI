@@ -1,9 +1,3 @@
-This is a major upgrade from the V1 documentation. Your new README needs to reflect that **VoltAssist** is no longer just a Bihar-centric calculator, but a multi-state, industrial-grade auditing platform with solar and vision capabilities.
-
-Here is the updated **README.md** for your V2 deployment:
-
----
-
 # ⚡ VoltAssist AI (V2.0 PRO)
 
 **The Universal, AI-Powered Utility Auditing & Solar Net Metering Engine**
