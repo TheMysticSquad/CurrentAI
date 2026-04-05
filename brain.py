@@ -15,16 +15,18 @@ from groq import Groq
 load_dotenv(find_dotenv())
 
 # 2. Initialize the Cloud AI (Groq)
+
 groq_api_key = os.getenv("GROQ_API_KEY")
+
 if not groq_api_key:
-    raise ValueError("GROQ_API_KEY environment variable is not set. Please check your .env file!")
+    raise ValueError("GROQ_API_KEY not found! Add it to Render Environment Variables.")
 
+# --- THE FIX: Use groq_api_key and pass as a plain string ---
 llm = ChatGroq(
-    model="llama-3.1-8b-instant",
-    api_key=SecretStr(groq_api_key),
-    temperature=0.1  
+    groq_api_key=groq_api_key, 
+    model_name="llama-3.1-8b-instant", # Note: model_name is the standard param
+    temperature=0.1
 )
-
 # 3. Set up the Base Parser
 base_parser = PydanticOutputParser(pydantic_object=BillingParameters)
 
