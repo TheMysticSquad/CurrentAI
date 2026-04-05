@@ -1,6 +1,20 @@
-streamlit
-langchain
-langchain-core
-langchain-groq
-python-dotenv
-pydantic
+# --- CORE WEB INTERFACE ---
+streamlit==1.32.0
+
+# --- AI & NLP ENGINE ---
+langchain==0.1.12
+langchain-community==0.0.28
+langchain-openai==0.1.1
+openai==1.14.0
+pydantic==2.6.4
+
+# --- DOCUMENT & IMAGE PROCESSING ---
+PyPDF2==3.0.1
+Pillow==10.2.0
+
+# --- ARTIFACT & PDF GENERATION ---
+fpdf==1.7.2
+
+# --- UTILS ---
+python-dotenv==1.0.1
+datetime
